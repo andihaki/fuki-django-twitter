@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            :root {
+                --black: #555;
+                --white: #fff;
+            }
+
+            html {
+                box-sizing: border-box;
+            }
+
+            * {
+                box-sizing: inherit;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 16px;
+                min-height: 100vh;
+                min-width: 100vw;
+            }
+            
+            .container {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .title {
+                text-align: center;
+                font-size: 6rem;
+                color: var(--black);
+            }
+
+            .btn {
+                font-family: sans-serif;
+                padding: 1rem 3rem;
+                background: var(--black);
+                color: var(--white);
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 1.25rem;
+                border-radius: .5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">Hello to MyTwitter!</h1>
+            <a class="btn" href="/tweets">See tweets</a>
+        </div>
+    </body>
+</html>

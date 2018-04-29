@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            :root {
+                --black: #555;
+                --shadow: #333;
+                --white: #fff;
+                --gray:  #eee;
+            }
+
+            html {
+                box-sizing: border-box;
+            }
+
+            * {
+                box-sizing: inherit;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 16px;
+                min-height: 100vh;
+                min-width: 100vw;
+                font-family: sans-serif;
+            }
+            
+            .container {
+                height: 100%;
+                padding: 2rem;
+                max-width: 48rem;
+                margin: 0 auto;
+            }
+
+            .tweet-form {
+                display: flex;
+                flex-direction: column;
+            }
+
+            textarea {
+                background: var(--gray);
+                padding: 1rem;
+                min-height: 5rem;
+                font-size: 1.25rem;
+                border: 0;
+                border-top-left-radius: .5rem;
+                border-top-right-radius: .5rem;
+            }
+
+            button {
+                background: var(--black);
+                padding: .5rem 1rem;
+                color: var(--white);
+                border: 0;
+                border-bottom: .25rem solid var(--shadow);
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 1rem;
+                border-bottom-left-radius: .5rem;
+                border-bottom-right-radius: .5rem;
+                cursor: pointer;
+            }
+            
+            .tweet-list {
+                margin-top: 2rem;
+            }
+
+            .tweet {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .tweet:not(:last-of-type) {
+                margin-bottom: 2rem;
+            }
+            
+            .tweet p {
+                margin: 0;
+                margin-bottom: .5rem;
+            }
+
+            .tweet small {
+                align-self: flex-end;
+            }
+
+            .btn {
+                display: inline-block;
+                font-family: sans-serif;
+                padding: 0.5rem 1rem;
+                background: var(--black);
+                color: var(--white);
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: .8rem;
+                margin-bottom: 1rem;
+                border-radius: .5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <a href="/" class="btn">&lt; Back to home</a>
+            <form class="tweet-form" method="post" action="/tweets/create">
+                {% csrf_token %}
+                <textarea name="tweet"></textarea>
+                <button type="submit">Tweet!</button>
+            </form>
+            <div class="tweet-list">
+                {% for tweet in tweets %}
+                <div class="tweet">
+                    <p class="content">{{ tweet.text }}</p>
+                    <small>{{ tweet.created_at }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
